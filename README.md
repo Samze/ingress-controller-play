@@ -18,3 +18,15 @@ Test subpaths
 * curl -H "Host: example.com" localhost:9000/static/css/styles.css # test istio
 * curl -H "Host: example.com" localhost:9001/static/css/styles.css # test nginx
 * curl -H "Host: example.com" localhost:9002/static/css/styles.css # test contour
+
+---
+Differences in how each ingress-controller hadnles "path".
+
+* Doing a subdomain  `curl -H "Host: example.com" localhost:900x/static/css/styles.css -i`
+
+| Path  | /  |  /* | /.+ |  
+|---|---|---|---|
+| istio |  ❌ | ✅   |  ❌| 
+| nginx |  ✅  |  ✅  |   ❌ | 
+| contour |  ✅ | ❌   | ✅ | 
+
