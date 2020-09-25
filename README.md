@@ -6,11 +6,12 @@
 1. kubectl port-forward -n ingress-nginx svc/ingress-nginx-controller 9001:80
 1. kubectl port-forward -n projectcontour svc/envoy 9002:80
 
-1. curl -H "Host: example.com" localhost:9000 # test istio
-1. curl -H "Host: example.com" localhost:9001 # test nginx
-1. curl -H "Host: example.com" localhost:9002 # test contour
+Test root
+* curl -H "Host: example.com" localhost:9000 # test istio
+* curl -H "Host: example.com" localhost:9001 # test nginx
+* curl -H "Host: example.com" localhost:9002 # test contour
 
-1. curl -H "Host: example.com" localhost:9000/static/css/styles.css # test istio
-1. curl -H "Host: example.com" localhost:9001/static/css/styles.css # test nginx
-1. curl -H "Host: example.com" localhost:9002/static/css/styles.css # test
-   contour
+Test subpaths
+* curl -H "Host: example.com" localhost:9000/static/css/styles.css # test istio
+* curl -H "Host: example.com" localhost:9001/static/css/styles.css # test nginx
+* curl -H "Host: example.com" localhost:9002/static/css/styles.css # test contour
